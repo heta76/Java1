@@ -1,7 +1,5 @@
 package org.knit.lab1;
 
-import java.util.Arrays;
-
 /***
  * Задача 2
  * Создайте класс SimpleUrl

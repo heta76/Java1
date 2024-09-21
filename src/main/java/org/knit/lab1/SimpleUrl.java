@@ -27,6 +27,24 @@ public class SimpleUrl {
     private String webpageName;
     private String webPageExtention;
 
+    public void execute() {
+//        String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
+        String urlValue = "https://javarush.com/quests/lectures/questsyntaxpro.level13.lecture03";
+        String[] host = urlValue.split("://");
+        protocol = host[0];
+        address = host[1].split("/")[0];
+        domainZone = urlValue.split("\\.")[1].split("/")[0];
+        siteName = host[1].split("\\.")[0];
+        webpageName = host[1].split("/")[3].split("\\?")[0];
+        webPageExtention = host[1].split("/")[3].split("\\?")[0].split("\\.")[1];
+    }
+
+    public String toString() {
+        return "protocol = " + this.protocol + '\n' + "address = " + address + '\n' + "domainZone = " + domainZone//
+                + '\n' + "siteName = " + siteName + '\n' + "webpageName = " + webpageName + //
+                '\n' + "webPageExtention = " + webPageExtention;
+    }
+
     public String getProtocol() {
         return protocol;
     }
@@ -73,16 +91,5 @@ public class SimpleUrl {
 
     public void setWebPageExtension(String webPageExtension) {
         this.webPageExtention = webPageExtension;
-    }
-
-    public void execute() {
-        String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
-        String[] host = urlValue.split("://");
-        protocol = host[0];
-        address = host[1].split("/")[0];
-    }
-
-    public String toString() {
-        return "protocol = " + this.protocol + '\n' + "address = " + this.address;
     }
 }

@@ -1,5 +1,7 @@
 package org.knit.lab1;
 
+import java.util.HashMap;
+
 /***
  * Задача 2
  * Создайте класс SimpleUrl
@@ -24,19 +26,32 @@ public class SimpleUrl {
     private String address;
     private String domainZone;
     private String siteName;
+
     private String webpageName;
     private String webPageExtention;
+    HashMap<String, String> variables = new HashMap<String, String>();
 
     public void execute() {
-//        String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
-        String urlValue = "https://javarush.com/quests/lectures/questsyntaxpro.level13.lecture03";
-        String[] host = urlValue.split("://");
-        protocol = host[0];
-        address = host[1].split("/")[0];
-        domainZone = urlValue.split("\\.")[1].split("/")[0];
-        siteName = host[1].split("\\.")[0];
-        webpageName = host[1].split("/")[3].split("\\?")[0];
-        webPageExtention = host[1].split("/")[3].split("\\?")[0].split("\\.")[1];
+
+        String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
+//        String urlValue = "https://javarush.com/quests/lectures/questsyntaxpro.level13.lecture03";
+        String right = urlValue.split("\\?")[1];
+        String left = urlValue.split("\\?")[0];
+        String host = left.split("://")[0];
+        String[] parts = right.split("&");
+        protocol = host;
+        for (int i = 0; i < parts.length; i++) {
+            variables.put(parts[i].split("=")[0], parts[i].split("=")[1]);
+        }
+        for (String key : variables.keySet()) {
+            String value = variables.get(key);
+            System.out.println(key + " = " + value);
+        }
+//        address = host[1].split("/")[0];
+//        domainZone = urlValue.split("\\.")[1].split("/")[0];
+//        siteName = host[1].split("\\.")[0];
+//        webpageName = host[1].split("/")[3].split("\\?")[0];
+//        webPageExtention = host[1].split("/")[3].split("\\?")[0].split("\\.")[1];
     }
 
     public String toString() {

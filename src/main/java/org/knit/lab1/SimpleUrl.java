@@ -26,38 +26,44 @@ public class SimpleUrl {
     private String address;
     private String domainZone;
     private String siteName;
-
     private String webpageName;
-    private String webPageExtention;
+    private String webPageExtension;
     HashMap<String, String> variables = new HashMap<String, String>();
 
     public void execute() {
-
+        String right = "";
+        String[] parts;
         String urlValue = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
-//        String urlValue = "https://javarush.com/quests/lectures/questsyntaxpro.level13.lecture03";
-        String right = urlValue.split("\\?")[1];
+//        String urlValue = "https://yandex.ru/search/?text=java+boolean&lr=194&clid=2456107&src=suggest_B";
         String left = urlValue.split("\\?")[0];
-        String host = left.split("://")[0];
-        String[] parts = right.split("&");
-        protocol = host;
-        for (int i = 0; i < parts.length; i++) {
-            variables.put(parts[i].split("=")[0], parts[i].split("=")[1]);
+        if (urlValue.split("\\?").length > 1) {
+            right = urlValue.split("\\?")[1];
+            parts = right.split("&");
+            for (int i = 0; i < parts.length; i++) {
+                variables.put(parts[i].split("=")[0], parts[i].split("=")[1]);
+            }
         }
+        protocol = left.split("://")[0];
+        address = left.split("://")[1].split("/")[0];
+        siteName = address.substring(0, address.lastIndexOf("."));
+        domainZone = address.substring(address.lastIndexOf(".") + 1);
+        webpageName = left.split("/")[left.split("/").length - 1];
+        if (webpageName.split("\\.").length > 1) {
+            webPageExtension = webpageName.split("\\.")[webpageName.split("\\.").length - 1];
+        } else webPageExtension = "N/A";
+    }
+
+    public void listContent() {
         for (String key : variables.keySet()) {
             String value = variables.get(key);
             System.out.println(key + " = " + value);
         }
-//        address = host[1].split("/")[0];
-//        domainZone = urlValue.split("\\.")[1].split("/")[0];
-//        siteName = host[1].split("\\.")[0];
-//        webpageName = host[1].split("/")[3].split("\\?")[0];
-//        webPageExtention = host[1].split("/")[3].split("\\?")[0].split("\\.")[1];
     }
 
     public String toString() {
-        return "protocol = " + this.protocol + '\n' + "address = " + address + '\n' + "domainZone = " + domainZone//
+        return "protocol = " + protocol + '\n' + "address = " + address + '\n' + "domainZone = " + domainZone//
                 + '\n' + "siteName = " + siteName + '\n' + "webpageName = " + webpageName + //
-                '\n' + "webPageExtention = " + webPageExtention;
+                '\n' + "webPageExtention = " + webPageExtension;
     }
 
     public String getProtocol() {
@@ -101,10 +107,10 @@ public class SimpleUrl {
     }
 
     public String getWebPageExtension() {
-        return webPageExtention;
+        return webPageExtension;
     }
 
     public void setWebPageExtension(String webPageExtension) {
-        this.webPageExtention = webPageExtension;
+        this.webPageExtension = webPageExtension;
     }
 }

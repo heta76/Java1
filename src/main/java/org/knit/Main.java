@@ -12,5 +12,6 @@ public class Main {
         SimpleUrl simpleUrl = new SimpleUrl();
         simpleUrl.execute();
         System.out.println(simpleUrl.toString());
+        simpleUrl.listContent();
     }
 }

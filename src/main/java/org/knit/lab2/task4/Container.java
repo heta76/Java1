@@ -1,4 +1,4 @@
-package org.knit.lab2;
+package org.knit.lab2.task4;
 
 /**
  * Задача № 4: Реализация классов для объемных фигур и контейнера

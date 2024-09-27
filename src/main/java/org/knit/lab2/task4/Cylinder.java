@@ -1,4 +1,4 @@
-package org.knit.lab2;
+package org.knit.lab2.task4;
 
 public class Cylinder extends Shape {
     public Cylinder(double length, double high) {

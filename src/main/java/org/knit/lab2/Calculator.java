@@ -87,6 +87,7 @@ public class Calculator {
                 System.out.println(divide(Double.valueOf(firstNumber), Double.valueOf(secondNumber)));
                 break;
             default:
+                System.out.println("Несуществующий оператор");
                 break;
         }
     }

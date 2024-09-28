@@ -8,7 +8,7 @@ public class Folder extends FileSystemComponent {
     }
 
     @Override
-    public int add(FileSystemComponent component) {
-        return super.add(component);
+    public void add(FileSystemComponent component) {
+        super.add(component);
     }
 }

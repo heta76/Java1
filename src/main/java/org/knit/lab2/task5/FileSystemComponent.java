@@ -19,9 +19,8 @@ public abstract class FileSystemComponent {
     public int getSize() {
         return size;
     }
+    protected abstract void add(FileSystemComponent component);
+    protected abstract void remove(FileSystemComponent component);
+    protected abstract void display(String name);
 
-    public void add(FileSystemComponent component) {
-        size = size + component.getSize();
-
-    }
 }

@@ -2,10 +2,9 @@ package org.knit.lab2.task5;
 
 public class File extends FileSystemComponent {
 
-    public File(String name, int size) {
+    public File(String name, int size){
         super(name, size);
     }
-
     @Override
     public String getName() {
         return super.getName();
@@ -17,7 +16,17 @@ public class File extends FileSystemComponent {
     }
 
     @Override
-    public void add(FileSystemComponent component) {
-        System.out.println("В файл нельзя добавить файл");
+    protected void add(FileSystemComponent component) {
+        System.out.println("File не может хранить в себе другие файлы.");
+    }
+
+    @Override
+    protected void remove(FileSystemComponent component) {
+        System.out.println("File не хранит в себе другие файлы.");
+    }
+
+    @Override
+    protected void display(String name) {
+        System.out.println(name + getName() + " (" + getSize() + " bytes)");
     }
 }

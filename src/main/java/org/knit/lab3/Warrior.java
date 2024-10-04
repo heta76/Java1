@@ -3,32 +3,31 @@ package org.knit.lab3;
 public class Warrior extends Player implements Attacker{
 
 
-    public Warrior(String name) {
-        super(name);
+    public Warrior(String name, int maxHealth, int x, int y, int damage, int defence, int attackRadius) {
+        super(name, maxHealth, x, y, damage, defence, attackRadius);
     }
-
-    @Override
-    protected void increaseHealth(int value) {
-        int health = getcurrentHealth();
-        health += value;
-        if (health <= getMaxHealth()){
-            setCurrentHealth(health);
-        }else setCurrentHealth(getMaxHealth());
-
-    }
-
-    @Override
-    protected void decreaseHealth(int value) {
-        int health = getcurrentHealth();
-        health -= value;
-        setCurrentHealth(health);
-    }
-
 
     @Override
     public void attack(Player player) {
-        player.decreaseHealth(50);
-        System.out.println(getName() + " атакует игрока " + player.getName());
-        System.out.println("Здоровье игрока " + player.getName() + ":" + player.getcurrentHealth() + "\n");
+        if (getIsAlive()) {
+            if (!player.getIsAlive()) {
+                System.out.println("Игрок " + player.getName() + " уже мертв." + "\n");
+            } else {
+                if (Math.sqrt(Math.pow(player.getX() - getX(), 2) + Math.pow(player.getY() - getY(), 2)) <= getAttackRadius()) {
+                    player.decreaseHealth(getDamage());
+                    System.out.println("Воин " + getName() + " нанес " + getDamage() + " урона игроку " + player.getName() + "(защита " + player.getDefence() + ")" + ".");
+                    if (player.getcurrentHealth() > 0) {
+                        System.out.println("Здоровье игрока " + player.getName() + ":" + player.getcurrentHealth() + "\n");
+                    } else {
+                        player.setAlive(false);
+                        System.out.println("Игрок " + player.getName() + " мертв\n");
+                    }
+                } else {
+                    System.out.println("Воин " + getName() + " находится слишком далеко от игрока " + player.getName() + " чтобы нанести ему урон");
+                }
+            }
+        } else {
+            System.out.println("Ваш герой мертв. Дождитесь воскрешения.");
+        }
     }
 }

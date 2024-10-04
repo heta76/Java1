@@ -9,14 +9,34 @@ public abstract class Player {
     private int y;
     private int damage;
     private int defence;
+    private int attackRadius;
 
-    public Player(String name) {
+    public Player(
+            String name,
+            int maxHealth,
+            int x,
+            int y,
+            int damage,
+            int defence,
+            int attackRadius
+    ) {
         this.name = name;
+        this.currentHealth = maxHealth;
+        this.maxHealth = maxHealth;
+        this.x = x;
+        this.y = y;
+        this.damage = damage;
+        this.defence = defence;
+        this.attackRadius = attackRadius;
     }
 
-    protected abstract void increaseHealth(int value);
+    protected void increaseHealth(int value){
+        currentHealth = Math.min((currentHealth + value), maxHealth);
+    }
 
-    protected abstract void decreaseHealth(int value);
+    protected void decreaseHealth(int value){
+        currentHealth = Math.min(currentHealth + defence - value, maxHealth);
+    };
 
     public int getcurrentHealth() {
         return currentHealth;
@@ -26,23 +46,20 @@ public abstract class Player {
         this.currentHealth = currentHealth;
     }
 
-    public void changeX(int x){
-        this.x = x;
+    public void move(int newx, int newy) {
+        this.x = newx;
+        this.y = newy;
     }
 
-    public void changeY(int y){
-        this.y = y;
-    }
-
-    public String getName() {
+    protected String getName() {
         return name;
     }
 
-    public int getMaxHealth(){
+    protected int getMaxHealth() {
         return maxHealth;
     }
 
-    public int getDefence(){
+    protected int getDefence() {
         return defence;
     }
 
@@ -50,4 +67,32 @@ public abstract class Player {
         this.isAlive = isAlive;
     }
 
+    public boolean getIsAlive() {
+        return isAlive;
+    }
+
+    protected int getX() {
+        return x;
+    }
+
+    protected int getY() {
+        return y;
+    }
+
+    protected int getDamage() {
+        return damage;
+    }
+
+    protected int getAttackRadius(){
+        return attackRadius;
+    }
+
+    @Override
+    public String toString() {
+        return "Игрок " + name + " : " +
+                currentHealth + " hp at " +
+                "(" + x + "," + y + ") " +
+                "with " + damage + " damage " +
+                "and " + defence + " defence";
+    }
 }

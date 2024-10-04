@@ -1,5 +1,5 @@
 package org.knit.lab3;
 
 public interface SpellCaster {
-    void castSpell();
+    void castSpell(Player player);
 }

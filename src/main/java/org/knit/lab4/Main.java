@@ -19,6 +19,7 @@ public class Main {
             alphabet += (char) i;
         }
         DictionaryStatistic dictionary = new DictionaryStatistic(words, alphabet.toCharArray());
+
         System.out.println(dictionary.getDictionarySize());
         System.out.println(dictionary.getPolindrom());
         System.out.println(dictionary.getMinWordLength());

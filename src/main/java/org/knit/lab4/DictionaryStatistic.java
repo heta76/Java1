@@ -71,6 +71,7 @@ public class DictionaryStatistic {
         return words[rnd.nextInt(dictionarySize)];
     }
 
+    // поиск количества вхождений буквы из проверяемого слова в исходное
     private int countLettersInCharArray(char[] array, char charToFind) {
         int result = 0;
         for (char c : array) {
@@ -97,6 +98,8 @@ public class DictionaryStatistic {
                 System.out.println(wordToCheck);
         }
     }
+
+
     public void printSymbolsStat() {
         for (int i = 0; i < alphabet.length; i++) {
             System.out.println(alphabet[i] + ": " + frequency[i]);

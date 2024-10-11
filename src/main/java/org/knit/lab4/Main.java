@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) throws FileNotFoundException {
         int len = 67774;
         String alphabet = "";
@@ -19,12 +18,17 @@ public class Main {
         for (int i = 'а'; i <= 'я'; i++) {
             alphabet += (char) i;
         }
-        System.out.println(alphabet);
         DictionaryStatistic dictionary = new DictionaryStatistic(words, alphabet.toCharArray());
         System.out.println(dictionary.getDictionarySize());
-        dictionary.findAll();
-        System.out.println(dictionary.getMaxWordLength());
+        System.out.println(dictionary.getPolindrom());
         System.out.println(dictionary.getMinWordLength());
-//        System.out.println(dictionary.getFrequency());
+        System.out.println(dictionary.getMaxWordLength());
+        // частоты букв
+        dictionary.printSymbolsStat();
+        // случайное слово
+        System.out.println(dictionary.getRandomWord());
+        // игра
+        dictionary.game("мыльница");
     }
 }
+

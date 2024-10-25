@@ -1,8 +1,7 @@
-package org.knit.lab5;
+package org.knit.lab5.task8;
 
 import java.util.Objects;
 import java.util.Random;
-import java.util.Comparator;
 
 public class ShopItem {
     private int price;

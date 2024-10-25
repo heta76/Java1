@@ -1,6 +1,5 @@
-package org.knit.lab5;
+package org.knit.lab5.task8;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.*;
 
 public class Main {
@@ -41,6 +40,7 @@ public class Main {
                 System.out.println(entry);
             }
         }
+
     }
 }
 

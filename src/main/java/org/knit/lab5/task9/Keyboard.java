@@ -7,19 +7,20 @@ import java.util.*;
 
 //пример
 public class Keyboard {
-
+public static final long TIMEOUT = 20000;
     public static void main(String[] args) throws FileNotFoundException {
         //получает текущее время в миллисекундах
         long timeMillis = System.currentTimeMillis();
         Scanner scanner = new Scanner(System.in);
         List<String> dictWords = getWords();
 
+
         int words = 0;
         int rightWords = 0;
         int symbols = 0;
         List<String[]> mistakes = new ArrayList<>();
         while (true) {
-            if (System.currentTimeMillis() - timeMillis >= 60000) {
+            if (System.currentTimeMillis() - timeMillis >= TIMEOUT) {
                 System.out.println("Минута вышла. Последнее введенное слово не учитывается!");
                 break;
             } else {
@@ -27,7 +28,7 @@ public class Keyboard {
                 System.out.println("Введите: " + randomWord);
                 String newWord = scanner.nextLine();
 
-                if (System.currentTimeMillis() - timeMillis >= 60000) {
+                if (System.currentTimeMillis() - timeMillis >= TIMEOUT) {
                     System.out.println("Минута вышла. Последнее введенное слово не учитывается!");
                     break;
                 }

@@ -26,7 +26,6 @@ public class Main {
             itemsCount.put(items[i].getName() + items[i].getArticule().toString(), 1);
             for (int j = i + 1; j < items.length; j++) {
                 if (items[i].equals(items[j])) {
-                    System.out.println("боба");
                     itemsCount.put(items[i].getName() + items[i].getArticule().toString(), itemsCount.get(items[i].getName() + items[i].getArticule().toString()) + 1);
                 }
             }

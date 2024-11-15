@@ -3,7 +3,7 @@ package org.knit.lab6.task11;
 import java.util.Scanner;
 import java.util.TreeSet;
 
-public class Main {
+public class Task11 {
     public static void main(String[] args) {
         TreeSet students = new TreeSet();
         System.out.println("Меню:\n 1. Добавить студента\n 2. Удалить студента\n 3. Показать всех студентов\n " +

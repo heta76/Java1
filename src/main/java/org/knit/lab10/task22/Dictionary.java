@@ -10,6 +10,10 @@ import java.util.Map;
 public class Dictionary<K, V> {
     private final List<Pair<K, V>> list;
 
+    public int getLength(){
+        return list.size();
+    }
+
     // Конструктор
     public Dictionary() {
         this.list = new ArrayList<>();
@@ -38,21 +42,12 @@ public class Dictionary<K, V> {
         if (containsKey(key)){
             System.out.println(get(key));
             list.remove(get(key));
+            System.out.println("Значение по ключу " + key + " удалено" );
         }
         else {
             System.out.println("Элемента стаким ключом нет");
         }
     }
-
-//    // Метод для проверки наличия ключа
-//    public boolean containsKey(K key) {
-//        return list.containsKey(key);
-//    }
-//
-//    // Метод для получения всех ключей
-//    public Iterable<K> keys() {
-//        return list.;
-//    }
 
     public static void main(String[] args) {
         Dictionary<String, Integer> dictionary = new Dictionary<>();
@@ -66,14 +61,13 @@ public class Dictionary<K, V> {
         System.out.println(dictionary.get("Alice")); // 25
         System.out.println(dictionary.containsKey("Alice")); // true
 
-
         // Удаление элемента
         dictionary.remove("Alice");
-        System.out.println(dictionary.get("Alice")); // null
+        dictionary.get("Alice"); // элемента теперь нет
 
         // Проверка ключа
         System.out.println(dictionary.containsKey("Bob")); // true
-
+        System.out.println(dictionary.getLength());
 
 
     }

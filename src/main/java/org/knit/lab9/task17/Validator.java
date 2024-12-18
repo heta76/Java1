@@ -33,9 +33,11 @@ public class Validator {
             if (field.isAnnotationPresent(Min.class)) {
                 try {
                     int min = field.getAnnotation(Min.class).value();
-                    int intValue = (int)value;
-                    if (min > intValue) {
-                        System.out.println("Поле " + field.getName() + " должно быть не меньше " + min);
+                    if (value instanceof Integer){
+                        int intValue = (int)value;
+                        if (min > intValue) {
+                            System.out.println("Поле " + field.getName() + " должно быть не меньше " + min);
+                        }
                     }
                 } catch (Exception e) {
                     System.out.println("Неверный возраст");

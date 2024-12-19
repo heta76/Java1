@@ -11,6 +11,7 @@ public class DatabaseConnection {
     private DatabaseConnection() {}
 
     public static Connection getConnection() throws SQLException {
+        try { Class.forName("org.sqlite.JDBC").newInstance(); } catch(Exception e) {e.printStackTrace();}
         if (connection == null || connection.isClosed()) {
             connection = DriverManager.getConnection(URL);
         }

@@ -73,24 +73,29 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public void update(User user) throws SQLException {
         String request = "UPDATE users SET name = ?, email = ? WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(request)) {
-            statement.setString(1, user.getName());
-            statement.setString(2, user.getEmail());
-            statement.setInt(3, user.getId());
-            statement.executeUpdate();
-        } catch (SQLException e){
-            e.printStackTrace();
+
+        if (findById(user.getId()) != null) {
+            try (PreparedStatement statement = connection.prepareStatement(request)) {
+                statement.setString(1, user.getName());
+                statement.setString(2, user.getEmail());
+                statement.setInt(3, user.getId());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public void delete(int id) throws SQLException {
         String request = "DELETE FROM users WHERE id = ?";
-        try (PreparedStatement statement = connection.prepareStatement(request)) {
-            statement.setInt(1, id);
-            statement.executeUpdate();
-        } catch (SQLException e){
-            e.printStackTrace();
+        if (findById(id) != null) {
+            try (PreparedStatement statement = connection.prepareStatement(request)) {
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

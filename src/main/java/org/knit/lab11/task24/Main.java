@@ -1,4 +1,6 @@
-package org.knit.lab11;
+package org.knit.lab11.task24;
+
+import org.knit.lab11.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.SQLException;

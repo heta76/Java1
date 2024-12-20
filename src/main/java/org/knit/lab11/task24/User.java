@@ -1,4 +1,4 @@
-package org.knit.lab11;
+package org.knit.lab11.task24;
 
 public class User {
     private int id;

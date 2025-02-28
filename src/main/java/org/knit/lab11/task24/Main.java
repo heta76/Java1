@@ -76,16 +76,6 @@ public class Main {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
-//            System.out.println(userDAO.findById(1)); // поиск по индексу
-//            userDAO.create(new User(-1, "dzhdth", "dgdh@sh.ru"));
-////            System.out.println(userDAO.findById(6)); // поиск по индексу
-////              userDAO.delete(8); // удаление
-//            User user2 = new User(9, "abobus", "dgdh@sh.ru");
-//            userDAO.update(user2);
-//            for (User user : userDAO.findAll()){ // вывод всех
-//                System.out.println(user);
-//            }
     }
 }
 

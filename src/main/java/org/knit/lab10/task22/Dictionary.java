@@ -3,9 +3,7 @@ package org.knit.lab10.task22;
 import org.knit.lab10.task18.Pair;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Dictionary<K, V> {
     private final List<Pair<K, V>> list;
@@ -68,7 +66,5 @@ public class Dictionary<K, V> {
         // Проверка ключа
         System.out.println(dictionary.containsKey("Bob")); // true
         System.out.println(dictionary.getLength());
-
-
     }
 }

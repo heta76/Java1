@@ -9,8 +9,9 @@ public class UserService {
         this.userDAO = userDAO;
     }
 
+
     public void registerUser(String name, String email) {
-        User user = new User(-1, name, email);
+        User user = new User(name, email);
         try {
             userDAO.create(user);
         } catch (Exception e) {

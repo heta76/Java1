@@ -5,8 +5,10 @@ public class User {
     private String name;
     private String email;
 
-    // Конструктор без параметров
-    public User() {
+    // Конструктор
+    public User(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     // Конструктор с параметрами

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class FileApp {
+
     public static void main(String[] args) throws SQLException {
         try (Connection connection = DatabaseConnection.getConnection()) {
             FileDAO fileDAO = new FileDAO(connection);
@@ -16,6 +17,5 @@ public class FileApp {
             String path = scanner.nextLine();
             fileProcessor.processFiles(path);
         }
-
     }
 }
